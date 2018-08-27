@@ -10,6 +10,39 @@ namespace PizzaCreator
     {
         static void Main( string[] args )
         {
+            DisplayMenu();
+        }
+
+        private static void DisplayMenu()
+        {
+            Console.WriteLine("N)ew Order");
+            Console.WriteLine("M)odify Order");
+            Console.WriteLine("D)isplay Order");
+            Console.WriteLine("Q)uit");
+
+            string input = Console.ReadLine();
+            switch (input[0])
+            {
+                case 'N': NewOrder(); break;
+                case 'M': ModifyOrder(); break;
+                case 'D': DisplayOrder(); break;
+                case 'Q':; break;
+            }
+        }
+
+        private static void NewOrder()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ModifyOrder()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void DisplayOrder()
+        {
+            throw new NotImplementedException();
         }
     }
 }
