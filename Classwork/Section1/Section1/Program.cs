@@ -18,6 +18,7 @@ namespace Section1
             while (notQuit);
 
            //PlayWithStrings();
+
         }
 
         private static void PlayWithStrings()
@@ -118,9 +119,30 @@ namespace Section1
             };
         }
 
+        private static void PlayWithArrays()
+        {
+            int count = ReadInt32("How many names? ", 1);
+
+            string[] names = new string[count];
+            for(int index = 0; index < count; ++index)
+            {
+                Console.WriteLine("Name? ");
+                names[index] = Console.ReadLine();
+            };
+
+            foreach (string name in names)
+            //for(int index = 0; index < names.Length; ++index)
+            {
+                //Console.WriteLine(names[index]);
+                Console.WriteLine(name);
+            }
+        }
+
         private static void AddMovie()
         {
-            Console.WriteLine("Add Movie");
+            name = ReadString("Enter a name: ", true);
+            description = ReadString("Enter the description: ");
+            runLength = ReadInt32("Enter the length (in minutes): ", 0);
         }
 
         private static void EditMovie()
@@ -138,5 +160,45 @@ namespace Section1
             Console.WriteLine("View Movie");
         }
 
+        private static int ReadInt32 (string message, int minValue)
+        {
+            while (true)
+            {
+                Console.WriteLine(message);
+                string input = Console.ReadLine();
+
+                if (Int32.TryParse(input, out int result))
+                {
+                    if (result >= minValue)
+                        return result;
+                };
+                Console.WriteLine($"You must enter an integer value >= {minValue}");
+            };
+        }
+
+        private static string ReadString( string message )
+        {
+           return ReadString(message, false);
+        }
+
+        private static string ReadString( string message, bool required )
+        {
+            while (true)
+            {
+                Console.WriteLine(message);
+                string input = Console.ReadLine();
+
+                if (!String.IsNullOrEmpty(input) || !required)
+                    return input;
+
+                Console.WriteLine("You must enter a value.");
+            };
+        }
+
+        //A movie
+        static string name;
+        static string description;
+        static int runLength;
+        static DateTime releaseDate;
     }
 }
