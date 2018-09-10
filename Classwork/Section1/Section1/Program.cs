@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+ * ITSE 1430
+ * Sample implementation
+ */
+
+using System;
 
 namespace Section1
 {
@@ -17,7 +18,7 @@ namespace Section1
             }
             while (notQuit);
 
-           //PlayWithStrings();
+            //PlayWithStrings();
 
         }
 
@@ -86,45 +87,12 @@ namespace Section1
 
         }
 
-        private static bool DisplayMenu()
-        {
-            while (true)
-            {
-                Console.WriteLine("A)dd Movie");
-                Console.WriteLine("E)dit Movie");
-                Console.WriteLine("D)elet Movie");
-                Console.WriteLine("V)iew Movie");
-                Console.WriteLine("Q)uit");
-
-                string input = Console.ReadLine();
-                switch (input[0])
-                {
-                    case 'a':  
-                    case 'A': AddMovie(); return true;
-
-                    case 'e':  
-                    case 'E': EditMovie(); return true;
-
-                    case 'd':  
-                    case 'D': DeleteMovie(); return true;
-
-                    case 'v': 
-                    case 'V': ViewMovie(); return true;
-
-                    case 'q': 
-                    case 'Q': return false;
-
-                    default: Console.WriteLine("Please enter a valid value.\n"); break;
-                };
-            };
-        }
-
         private static void PlayWithArrays()
         {
             int count = ReadInt32("How many names? ", 1);
 
             string[] names = new string[count];
-            for(int index = 0; index < count; ++index)
+            for (int index = 0; index < count; ++index)
             {
                 Console.WriteLine("Name? ");
                 names[index] = Console.ReadLine();
@@ -138,6 +106,50 @@ namespace Section1
             }
         }
 
+        private static bool DisplayMenu()
+        {
+            while (true)
+            {
+                Console.WriteLine("A)dd Movie");
+                Console.WriteLine("E)dit Movie");
+                Console.WriteLine("D)elet Movie");
+                Console.WriteLine("V)iew Movie");
+                Console.WriteLine("Q)uit");
+
+                string input = Console.ReadLine();
+                switch (input[0])
+                {
+                    case 'a':
+                    case 'A':
+                    AddMovie();
+                    return true;
+
+                    case 'e':
+                    case 'E':
+                    EditMovie();
+                    return true;
+
+                    case 'd':
+                    case 'D':
+                    DeleteMovie();
+                    return true;
+
+                    case 'v':
+                    case 'V':
+                    ViewMovie();
+                    return true;
+
+                    case 'q':
+                    case 'Q':
+                    return false;
+
+                    default:
+                    Console.WriteLine("Please enter a valid value.\n");
+                    break;
+                };
+            };
+        }
+
         private static void AddMovie()
         {
             name = ReadString("Enter a name: ", true);
@@ -147,27 +159,77 @@ namespace Section1
 
         private static void EditMovie()
         {
-            Console.WriteLine("Edit Movie");
+            ViewMovie();
+
+            //"var" can be used as type inferencing instead of actual data type
+
+            var newName = ReadString("Enter a name (or press ENTER for default): ", false);
+            if (!String.IsNullOrEmpty(newName))
+                name = newName;
+
+            var newDescription = ReadString("Enter the description (or press ENTER for default): ");
+            if (!String.IsNullOrEmpty(newDescription))
+                description = newDescription;
+
+            var newLength = ReadInt32("Enter the length (in minutes): \n", 0);
+            if (newLength > 0)
+                runLength = newLength;
         }
 
         private static void DeleteMovie()
         {
-            Console.WriteLine("Delete Movie");
+            if (Confirm("Are you sure you want to delete this movie?"))
+            {
+                name = null;
+                description = null;
+                runLength = 0;
+            };
+        }
+
+        private static bool Confirm( string message )
+        {
+            Console.WriteLine($"{message} (Y/N)");
+
+            do
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                switch (key.KeyChar)
+                {
+                    case 'Y':
+                    case 'y':
+                    return true;
+
+                    case 'N':
+                    case 'n':
+                    return false;
+                };
+            } while (true);
         }
 
         private static void ViewMovie()
         {
-            Console.WriteLine("View Movie");
+            if (String.IsNullOrEmpty(name))
+            {
+                Console.WriteLine("No movies available");
+                return;
+            }
+
+            Console.WriteLine(name);
+
+            if (!String.IsNullOrEmpty(description))
+                Console.WriteLine(description);
+
+            Console.WriteLine($"Run length = {runLength} mins");
         }
 
-        private static int ReadInt32 (string message, int minValue)
+        private static int ReadInt32( string message, int minValue )
         {
             while (true)
             {
                 Console.WriteLine(message);
-                string input = Console.ReadLine();
+                var input = Console.ReadLine();
 
-                if (Int32.TryParse(input, out int result))
+                if (Int32.TryParse(input, out var result))
                 {
                     if (result >= minValue)
                         return result;
@@ -178,7 +240,7 @@ namespace Section1
 
         private static string ReadString( string message )
         {
-           return ReadString(message, false);
+            return ReadString(message, false);
         }
 
         private static string ReadString( string message, bool required )
@@ -199,6 +261,5 @@ namespace Section1
         static string name;
         static string description;
         static int runLength;
-        static DateTime releaseDate;
     }
 }
