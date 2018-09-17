@@ -1,6 +1,7 @@
 ﻿/*
+ * Hoa Luu
  * ITSE 1430
- * Sample implementation
+ * Pizza Creator
  */
 
 using System;
@@ -215,4 +216,3 @@ namespace Section1
     }
 
 }
-
