@@ -45,5 +45,20 @@ namespace Itse1430.MovieLib.UI
             //aboutToolStripMenuItem.
             MessageBox.Show(this, "Sorry", "Help", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+
+        private void fileToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+
+        }
+
+        private void OnMovieAdd( object sender, EventArgs e )
+        {
+            var form = new MovieForm();
+
+            if (form.ShowDialog(this) == DialogResult.Cancel)
+                return;
+
+            MessageBox.Show("Adding movie");
+        }
     }
 }
