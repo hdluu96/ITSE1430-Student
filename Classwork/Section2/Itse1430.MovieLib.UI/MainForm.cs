@@ -17,11 +17,6 @@ namespace Itse1430.MovieLib.UI
             InitializeComponent();
         }
 
-        private void Form1_Load( object sender, EventArgs e )
-        {
-
-        }
-
         private void movieToolStripMenuItem_Click( object sender, EventArgs e )
         {
 
@@ -58,7 +53,11 @@ namespace Itse1430.MovieLib.UI
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
-            MessageBox.Show("Adding movie");
+            //MessageBox.Show("Adding movie");
+            Movie = form.Movie;
+            //Movie.Name = "";
         }
+
+        private Movie Movie;
     }
 }
