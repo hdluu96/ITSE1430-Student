@@ -8,50 +8,49 @@ namespace Itse1430.MovieLib
 {
     public class Movie
     {
-        public string GetName ()
+        public string Name
         {
-            return _name ?? "";
+            get { return _name ?? ""; }   // string get ()
+            set { _name = value; }  // void set ( string value )
         }
+        //public string GetName ()
+        //{
+        //    return _name ?? "";
+        //}
+        private string _name = "";
 
-        public void SetName ( string value )
+        public string Description
         {
-            _name = value;
-        }
-        private string _name;
-
-        public string GetDescription ()
-        {
-            return _description ?? "";
-        }
-
-        public void SetDescription ( string value )
-        {
-            _description = value;
+            get { return _description ?? ""; }
+            set { _description = value; }
         }
         private string _description;
 
-        public int GetReleaseYear()
-        {
-            return _releaseYear;
-        }
+        public int ReleaseYear { get; set; }
+        //{
+        //    get { return _releaseYear; }
+        //    set
+        //    {
+        //        if (value >= 1900)
+        //            _releaseYear = value;
+        //    }
+        //}
+        //private int _releaseYear = 1900;
+
+        //public int RunLength
+        //{
+        //    get { return _runLength; }
+        //    set
+        //    {
+        //        if (value >= 0)
+        //            _runLength = value;
+        //    }
+        //}
+
+        public int RunLength { get; set; }
+
+        //private int _runLength;
         
-        public void SetReleaseYear ( int value )
-        {
-            _releaseYear = value;
-        }
-        private int _releaseYear;
-
-        public int GetRunLength()
-        {
-            return _runLength;
-        }
-
-        public void SetRunLength ( int value )
-        {
-            if (value >= 0)
-                _runLength = value;
-        }
-        private int _runLength;
 
         int someValue;
         private int someValue2;
