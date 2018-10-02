@@ -26,7 +26,7 @@ namespace Itse1430.MovieLib
         }
         private string _description;
 
-        public int ReleaseYear { get; set; }
+        public int ReleaseYear { get; set; } = 1900;
         //{
         //    get { return _releaseYear; }
         //    set
@@ -37,6 +37,9 @@ namespace Itse1430.MovieLib
         //}
         //private int _releaseYear = 1900;
 
+
+        public int RunLength { get; set; }
+
         //public int RunLength
         //{
         //    get { return _runLength; }
@@ -46,11 +49,8 @@ namespace Itse1430.MovieLib
         //            _runLength = value;
         //    }
         //}
-
-        public int RunLength { get; set; }
-
         //private int _runLength;
-        
+
 
         int someValue;
         private int someValue2;
@@ -63,5 +63,12 @@ namespace Itse1430.MovieLib
 
         //    var y = someValue;
         //}
+
+        public int Id { get; private set; }
+
+        public bool IsColor
+        {
+            get { return ReleaseYear > 1940; }
+        }
     }
 }
