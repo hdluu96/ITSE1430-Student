@@ -27,7 +27,12 @@ namespace CharacterCreator.Winforms
 
         private void aboutToolStripMenuItem_Click( object sender, EventArgs e )
         {
-            MessageBox.Show(this, "Hoa Luu", "ITSE-1430 - Character Creator", MessageBoxButtons.OK, MessageBoxIcon.None);
+            MessageBox.Show(this, "Hoa Luu\nITSE1430\nCharacter Creator", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void newToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+
         }
     }
 }

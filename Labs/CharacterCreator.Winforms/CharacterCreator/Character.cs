@@ -8,12 +8,27 @@ namespace CharacterCreator
 {
     public class Character
     {
-        public string Name;
+        public string Username
+        {
+            get { return _name ?? ""; }
+            set { _name = value; }
+        }
+        private string _name;
+        public string Profession
+        {
+            get { return _profession ?? ""; }
+            set { _profession = value; }
+        }
+        private string _profession;
 
-        public string Profession;   // Fighter, HUnter, Priest, Rogue, Wizard
+        public string Race
+        {
+            get { return _race ?? ""; }
+            set { _race = value; }
+        }
+        private string _race;
 
-        public string Race;         // Dwarf, Elf, Gnome, Half Elf, Human
-
-        public int Attributes;      // Strength, Intelligence, Agility, Constitution, Charisma
+        public int Attributes { get; set; }
+        //private int _attributes;
     }
 }
