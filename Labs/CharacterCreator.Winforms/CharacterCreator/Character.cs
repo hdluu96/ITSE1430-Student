@@ -29,6 +29,6 @@ namespace CharacterCreator
         private string _race;
 
         public int Attributes { get; set; }
-        //private int _attributes;
+        public int Strength { get; set; }
     }
 }

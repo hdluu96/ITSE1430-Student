@@ -17,7 +17,7 @@ namespace CharacterCreator.Winforms
             InitializeComponent();
         }
 
-        private void exitToolStripMenuItem_Click( object sender, EventArgs e )
+        private void OnExit( object sender, EventArgs e )
         {
             if (MessageBox.Show("Are you sure you want to exit?", "Close", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
@@ -25,7 +25,7 @@ namespace CharacterCreator.Winforms
             Close();
         }
 
-        private void aboutToolStripMenuItem_Click( object sender, EventArgs e )
+        private void OnAbout( object sender, EventArgs e )
         {
             MessageBox.Show(this, "Hoa Luu\nITSE1430\nCharacter Creator", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
