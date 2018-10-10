@@ -90,5 +90,10 @@ namespace Itse1430.MovieLib.UI
                 _chkOwned.Checked = Movie.IsOwned;
             };
         }
+
+        private void label2_Click( object sender, EventArgs e )
+        {
+
+        }
     }
 }
