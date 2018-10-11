@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this._txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,6 +40,8 @@
             this._btnSave = new System.Windows.Forms.Button();
             this._btnCancel = new System.Windows.Forms.Button();
             this._chkOwned = new System.Windows.Forms.CheckBox();
+            this._error = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this._error)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,6 +62,7 @@
             this._txtName.Size = new System.Drawing.Size(251, 20);
             this._txtName.TabIndex = 0;
             this._txtName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this._txtName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateName);
             // 
             // label2
             // 
@@ -109,6 +113,7 @@
             this._txtRunLength.Name = "_txtRunLength";
             this._txtRunLength.Size = new System.Drawing.Size(57, 20);
             this._txtRunLength.TabIndex = 3;
+            this._txtRunLength.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingRunLength);
             // 
             // _txtReleaseYear
             // 
@@ -117,6 +122,7 @@
             this._txtReleaseYear.Name = "_txtReleaseYear";
             this._txtReleaseYear.Size = new System.Drawing.Size(57, 20);
             this._txtReleaseYear.TabIndex = 2;
+            this._txtReleaseYear.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingReleaseYear);
             // 
             // _btnSave
             // 
@@ -132,6 +138,7 @@
             // _btnCancel
             // 
             this._btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnCancel.CausesValidation = false;
             this._btnCancel.Location = new System.Drawing.Point(256, 248);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -151,10 +158,16 @@
             this._chkOwned.Text = "Owned";
             this._chkOwned.UseVisualStyleBackColor = true;
             // 
+            // _error
+            // 
+            this._error.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this._error.ContainerControl = this;
+            // 
             // MovieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(346, 287);
             this.ControlBox = false;
             this.Controls.Add(this._chkOwned);
@@ -173,6 +186,7 @@
             this.ShowInTaskbar = false;
             this.Text = "Movie Details";
             this.Load += new System.EventHandler(this.MovieForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this._error)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,5 +205,6 @@
         private System.Windows.Forms.Button _btnSave;
         private System.Windows.Forms.Button _btnCancel;
         private System.Windows.Forms.CheckBox _chkOwned;
+        private System.Windows.Forms.ErrorProvider _error;
     }
 }
