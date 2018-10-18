@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itse1430.MovieLib.UI", "Its
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itse1430.MovieLib", "Itse1430.MovieLib\Itse1430.MovieLib.csproj", "{043B49D1-ECA9-4D24-81A1-5618D1C27E7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itse1430.MovieLib.Memory", "Itse1430.MovieLib.Memory\Itse1430.MovieLib.Memory.csproj", "{D668D979-1049-46C9-B02A-8C004340F9C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{043B49D1-ECA9-4D24-81A1-5618D1C27E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{043B49D1-ECA9-4D24-81A1-5618D1C27E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{043B49D1-ECA9-4D24-81A1-5618D1C27E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D668D979-1049-46C9-B02A-8C004340F9C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D668D979-1049-46C9-B02A-8C004340F9C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D668D979-1049-46C9-B02A-8C004340F9C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D668D979-1049-46C9-B02A-8C004340F9C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
