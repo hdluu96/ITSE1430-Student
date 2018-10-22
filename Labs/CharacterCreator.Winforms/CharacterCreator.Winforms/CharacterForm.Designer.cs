@@ -34,8 +34,8 @@
             this._txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this._txtStrength = new System.Windows.Forms.TextBox();
-            this._buttonSave = new System.Windows.Forms.Button();
-            this._buttonCancel = new System.Windows.Forms.Button();
+            this._btnSave = new System.Windows.Forms.Button();
+            this._btnCancel = new System.Windows.Forms.Button();
             this._comboProfession = new System.Windows.Forms.ComboBox();
             this._comboRace = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -48,6 +48,8 @@
             this._txtConstitution = new System.Windows.Forms.TextBox();
             this._txtCharisma = new System.Windows.Forms.TextBox();
             this._errors = new System.Windows.Forms.ErrorProvider(this.components);
+            this._txtDescription = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this._errors)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +70,7 @@
             this.label2.Location = new System.Drawing.Point(10, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 1;
             this.label2.Text = "Profession";
             // 
             // _txtName
@@ -77,8 +79,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this._txtName.Location = new System.Drawing.Point(74, 25);
             this._txtName.Name = "_txtName";
-            this._txtName.Size = new System.Drawing.Size(102, 20);
-            this._txtName.TabIndex = 0;
+            this._txtName.Size = new System.Drawing.Size(178, 20);
+            this._txtName.TabIndex = 9;
             this._txtName.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateName);
             // 
             // label3
@@ -87,41 +89,41 @@
             this.label3.Location = new System.Drawing.Point(30, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 2;
             this.label3.Text = "Race";
             // 
             // _txtStrength
             // 
-            this._txtStrength.Location = new System.Drawing.Point(39, 156);
+            this._txtStrength.Location = new System.Drawing.Point(69, 137);
             this._txtStrength.Multiline = true;
             this._txtStrength.Name = "_txtStrength";
             this._txtStrength.Size = new System.Drawing.Size(24, 20);
-            this._txtStrength.TabIndex = 3;
+            this._txtStrength.TabIndex = 12;
             this._txtStrength.Text = "50";
             this._txtStrength.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateAttributes);
             // 
-            // _buttonSave
+            // _btnSave
             // 
-            this._buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._buttonSave.Location = new System.Drawing.Point(101, 282);
-            this._buttonSave.Name = "_buttonSave";
-            this._buttonSave.Size = new System.Drawing.Size(75, 23);
-            this._buttonSave.TabIndex = 9;
-            this._buttonSave.Text = "Save";
-            this._buttonSave.UseVisualStyleBackColor = true;
-            this._buttonSave.Click += new System.EventHandler(this.OnSave);
+            this._btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnSave.Location = new System.Drawing.Point(126, 417);
+            this._btnSave.Name = "_btnSave";
+            this._btnSave.Size = new System.Drawing.Size(75, 23);
+            this._btnSave.TabIndex = 18;
+            this._btnSave.Text = "Save";
+            this._btnSave.UseVisualStyleBackColor = true;
+            this._btnSave.Click += new System.EventHandler(this.OnSave);
             // 
-            // _buttonCancel
+            // _btnCancel
             // 
-            this._buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._buttonCancel.CausesValidation = false;
-            this._buttonCancel.Location = new System.Drawing.Point(197, 282);
-            this._buttonCancel.Name = "_buttonCancel";
-            this._buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this._buttonCancel.TabIndex = 10;
-            this._buttonCancel.Text = "Cancel";
-            this._buttonCancel.UseVisualStyleBackColor = true;
-            this._buttonCancel.Click += new System.EventHandler(this.OnCancel);
+            this._btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnCancel.CausesValidation = false;
+            this._btnCancel.Location = new System.Drawing.Point(207, 417);
+            this._btnCancel.Name = "_btnCancel";
+            this._btnCancel.Size = new System.Drawing.Size(75, 23);
+            this._btnCancel.TabIndex = 19;
+            this._btnCancel.Text = "Cancel";
+            this._btnCancel.UseVisualStyleBackColor = true;
+            this._btnCancel.Click += new System.EventHandler(this.OnCancel);
             // 
             // _comboProfession
             // 
@@ -137,7 +139,7 @@
             this._comboProfession.Name = "_comboProfession";
             this._comboProfession.Size = new System.Drawing.Size(178, 21);
             this._comboProfession.Sorted = true;
-            this._comboProfession.TabIndex = 1;
+            this._comboProfession.TabIndex = 10;
             // 
             // _comboRace
             // 
@@ -152,86 +154,86 @@
             this._comboRace.Location = new System.Drawing.Point(74, 92);
             this._comboRace.Name = "_comboRace";
             this._comboRace.Size = new System.Drawing.Size(178, 21);
-            this._comboRace.TabIndex = 2;
+            this._comboRace.TabIndex = 11;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 140);
+            this.label6.Location = new System.Drawing.Point(16, 140);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
-            this.label6.TabIndex = 9;
+            this.label6.TabIndex = 3;
             this.label6.Text = "Strength";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(115, 140);
+            this.label7.Location = new System.Drawing.Point(112, 140);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 13);
-            this.label7.TabIndex = 10;
+            this.label7.TabIndex = 4;
             this.label7.Text = "Intelligence";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 190);
+            this.label8.Location = new System.Drawing.Point(29, 190);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
-            this.label8.TabIndex = 11;
+            this.label8.TabIndex = 5;
             this.label8.Text = "Agility";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(114, 190);
+            this.label9.Location = new System.Drawing.Point(112, 190);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(62, 13);
-            this.label9.TabIndex = 12;
+            this.label9.TabIndex = 6;
             this.label9.Text = "Constitution";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 243);
+            this.label10.Location = new System.Drawing.Point(13, 243);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 13);
-            this.label10.TabIndex = 13;
+            this.label10.TabIndex = 7;
             this.label10.Text = "Charisma";
             // 
             // _txtIntelligence
             // 
-            this._txtIntelligence.Location = new System.Drawing.Point(152, 156);
+            this._txtIntelligence.Location = new System.Drawing.Point(179, 137);
             this._txtIntelligence.Name = "_txtIntelligence";
             this._txtIntelligence.Size = new System.Drawing.Size(24, 20);
-            this._txtIntelligence.TabIndex = 4;
+            this._txtIntelligence.TabIndex = 13;
             this._txtIntelligence.Text = "50";
             this._txtIntelligence.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateAttributes);
             // 
             // _txtAgility
             // 
-            this._txtAgility.Location = new System.Drawing.Point(39, 206);
+            this._txtAgility.Location = new System.Drawing.Point(69, 187);
             this._txtAgility.Name = "_txtAgility";
             this._txtAgility.Size = new System.Drawing.Size(24, 20);
-            this._txtAgility.TabIndex = 5;
+            this._txtAgility.TabIndex = 14;
             this._txtAgility.Text = "50";
             this._txtAgility.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateAttributes);
             // 
             // _txtConstitution
             // 
-            this._txtConstitution.Location = new System.Drawing.Point(152, 206);
+            this._txtConstitution.Location = new System.Drawing.Point(179, 187);
             this._txtConstitution.Name = "_txtConstitution";
             this._txtConstitution.Size = new System.Drawing.Size(24, 20);
-            this._txtConstitution.TabIndex = 6;
+            this._txtConstitution.TabIndex = 15;
             this._txtConstitution.Text = "50";
             this._txtConstitution.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateAttributes);
             // 
             // _txtCharisma
             // 
-            this._txtCharisma.Location = new System.Drawing.Point(39, 259);
+            this._txtCharisma.Location = new System.Drawing.Point(69, 240);
             this._txtCharisma.Name = "_txtCharisma";
             this._txtCharisma.Size = new System.Drawing.Size(24, 20);
-            this._txtCharisma.TabIndex = 7;
+            this._txtCharisma.TabIndex = 16;
             this._txtCharisma.Text = "50";
             this._txtCharisma.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateAttributes);
             // 
@@ -240,13 +242,33 @@
             this._errors.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this._errors.ContainerControl = this;
             // 
+            // _txtDescription
+            // 
+            this._txtDescription.Location = new System.Drawing.Point(69, 293);
+            this._txtDescription.MaximumSize = new System.Drawing.Size(1000, 250);
+            this._txtDescription.Multiline = true;
+            this._txtDescription.Name = "_txtDescription";
+            this._txtDescription.Size = new System.Drawing.Size(183, 100);
+            this._txtDescription.TabIndex = 17;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 296);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Description";
+            // 
             // CharacterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(284, 361);
+            this.ClientSize = new System.Drawing.Size(294, 461);
             this.ControlBox = false;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this._txtDescription);
             this.Controls.Add(this._txtCharisma);
             this.Controls.Add(this._txtConstitution);
             this.Controls.Add(this._txtAgility);
@@ -258,15 +280,15 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this._comboRace);
             this.Controls.Add(this._comboProfession);
-            this.Controls.Add(this._buttonCancel);
-            this.Controls.Add(this._buttonSave);
+            this.Controls.Add(this._btnCancel);
+            this.Controls.Add(this._btnSave);
             this.Controls.Add(this._txtStrength);
             this.Controls.Add(this.label3);
             this.Controls.Add(this._txtName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(300, 400);
+            this.MaximumSize = new System.Drawing.Size(350, 550);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(300, 400);
             this.Name = "CharacterForm";
@@ -290,8 +312,8 @@
         private System.Windows.Forms.TextBox _txtName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox _txtStrength;
-        private System.Windows.Forms.Button _buttonSave;
-        private System.Windows.Forms.Button _buttonCancel;
+        private System.Windows.Forms.Button _btnSave;
+        private System.Windows.Forms.Button _btnCancel;
         private System.Windows.Forms.ComboBox _comboProfession;
         private System.Windows.Forms.ComboBox _comboRace;
         private System.Windows.Forms.Label label6;
@@ -304,5 +326,7 @@
         private System.Windows.Forms.TextBox _txtConstitution;
         private System.Windows.Forms.TextBox _txtCharisma;
         private System.Windows.Forms.ErrorProvider _errors;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox _txtDescription;
     }
 }

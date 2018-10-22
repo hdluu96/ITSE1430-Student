@@ -40,6 +40,7 @@ namespace CharacterCreator.Winforms
                 _txtAgility.Text = Character.Agility.ToString();
                 _txtConstitution.Text = Character.Constitution.ToString();
                 _txtCharisma.Text = Character.Charisma.ToString();
+                _txtDescription.Text = Character.Description;
             };
 
             ValidateChildren();
@@ -59,6 +60,7 @@ namespace CharacterCreator.Winforms
             character.Agility = GetInt32(_txtAgility);
             character.Constitution = GetInt32(_txtConstitution);
             character.Charisma = GetInt32(_txtCharisma);
+            character.Description = _txtDescription.Text;
 
             Character = character;
             DialogResult = DialogResult.OK;

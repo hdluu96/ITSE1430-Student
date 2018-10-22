@@ -22,5 +22,7 @@ namespace CharacterCreator
         public int Agility { get; set; }
         public int Constitution { get; set; }
         public int Charisma { get; set; }
+
+        public string Description;
     }
 }
