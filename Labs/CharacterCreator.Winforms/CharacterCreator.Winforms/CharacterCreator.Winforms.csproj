@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9380A227-DC8A-48F1-8C89-56C3DD6C9329}</ProjectGuid>
+    <ProjectGuid>{2D28E06E-BF48-4ED3-9F90-070CBF0A5E64}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>CharacterCreator.Winforms</RootNamespace>
     <AssemblyName>CharacterCreator.Winforms</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -89,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CharacterCreator\CharacterCreator.csproj">
-      <Project>{750a16ea-185d-491d-8307-bb7050304ea9}</Project>
+      <Project>{44770785-e547-4c22-95dd-4f5aa5e0dd5d}</Project>
       <Name>CharacterCreator</Name>
     </ProjectReference>
   </ItemGroup>

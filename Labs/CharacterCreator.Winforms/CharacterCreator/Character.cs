@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/* Hoa Luu
+ * ITSE 1430
+ * 10/18/2018
+ */
 
 namespace CharacterCreator
 {
@@ -10,103 +9,18 @@ namespace CharacterCreator
     {
         public string Name
         {
-            get { return _name ?? ""; }
+            get { return _name ?? " "; }
             set { _name = value; }
         }
-        private string _name;
+        private string _name = "";
 
-        public string Profession
-        {
-            get { return _profession ?? ""; }
-            set { _profession = value; }
-        }
-        private string _profession;
+        public string Profession;
+        public string Race;
 
-        public string Race
-        {
-            get { return _race ?? ""; }
-            set { _race = value; }
-        }
-        private string _race;
-
-        public int Strength
-        {
-            get
-            {
-                return _strength;
-            }
-            set
-            {
-                if (value < 1 || value > 100)
-                return;
-
-                _strength = value;
-            }
-        }
-        private int _strength;
-
-        public int Intelligence
-        {
-            get
-            {
-                return _intelligence;
-            }
-            set
-            {
-                if (value < 1 || value > 100)
-                    return;
-
-                _intelligence = value;
-            }
-        }
-        private int _intelligence;
-
-        public int Agility
-        {
-            get
-            {
-                return _agility;
-            }
-            set
-            {
-                if (value < 1 || value > 100)
-                    return;
-
-                _agility = value;
-            }
-        }
-        private int _agility;
-
-        public int Constitution
-        {
-            get
-            {
-                return _constitution;
-            }
-            set
-            {
-                if (value < 1 || value > 100)
-                    return;
-
-                _constitution = value;
-            }
-        }
-        private int _constitution;
-
-        public int Charisma
-        {
-            get
-            {
-                return _charisma;
-            }
-            set
-            {
-                if (value < 1 || value > 100)
-                    return;
-
-                _charisma = value;
-            }
-        }
-        private int _charisma;
+        public int Strength { get; set; }
+        public int Intelligence { get; set; }
+        public int Agility { get; set; }
+        public int Constitution { get; set; }
+        public int Charisma { get; set; }
     }
 }
