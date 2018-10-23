@@ -21,12 +21,12 @@ namespace Itse1430.MovieLib
 
         /// <summary>Gets all the movies.</summary>
         /// <returns>The list of movies.</returns>
-        public Movie[] GetAll()
+        public IEnumerable<Movie> GetAll()
         {
             return GetAllCore();
         }
 
-        protected abstract Movie[] GetAllCore();
+        protected abstract IEnumerable<Movie> GetAllCore();
 
         /// <summary>Edits an existing movie.</summary>
         /// <param name="name">The movie to edit.</param>
@@ -48,6 +48,7 @@ namespace Itse1430.MovieLib
         }
 
         protected abstract Movie FindByName(string name);
+
         protected abstract void EditCore(Movie oldMovie, Movie newMovie);
 
         /// <summary>Removes a movie.</summary>
@@ -60,6 +61,7 @@ namespace Itse1430.MovieLib
 
             RemoveCore(name);
         }
+
         protected abstract void RemoveCore(string name);
     }
 }

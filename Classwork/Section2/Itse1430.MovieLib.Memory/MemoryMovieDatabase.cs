@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*
+ * ITSE1430
+ */
+using System;
 using System.Collections.Generic;
 
 namespace Itse1430.MovieLib.Memory
@@ -18,19 +21,20 @@ namespace Itse1430.MovieLib.Memory
 
         /// <summary>Gets all the movies.</summary>
         /// <returns>The list of movies.</returns>
-        protected override Movie[] GetAllCore()
+        protected override IEnumerable<Movie> GetAllCore()
         {
-            //How many movies do we have
-            var count = _items.Count;
+            return _items;
+            ////How many movies do we have
+            //var count = _items.Count;
 
-            var temp = new Movie[count];
-            var index = 0;
-            foreach (var movie in _items)
-            {
-                temp[index++] = movie;
-            };
+            //var temp = new Movie[count];
+            //var index = 0;
+            //foreach (var movie in _items)
+            //{
+            //    temp[index++] = movie;
+            //};
 
-            return temp;
+            //return temp;
         }
 
         /// <summary>Edits an existing movie.</summary>
@@ -45,17 +49,9 @@ namespace Itse1430.MovieLib.Memory
             _items.Add(newMovie);
         }
 
-        /// <summary>Removes a movie.</summary>
-        /// <param name="name">The movie to remove.</param>
-        protected override void RemoveCore(string name)
-        {
-            var movie = FindByName(name);
-            if (movie != null)
-                _items.Remove(movie);
-        }
-
-        #region Private Members
-
+        /// <summary>Finds a movie by its name.</summary>
+        /// <param name="name">The name of the movie.</param>
+        /// <returns>The movie, if any.</returns>
         protected override Movie FindByName(string name)
         {
             //Example with multiple type parameters
@@ -71,6 +67,17 @@ namespace Itse1430.MovieLib.Memory
 
             return null;
         }
+
+        /// <summary>Removes a movie.</summary>
+        /// <param name="name">The movie to remove.</param>
+        protected override void RemoveCore(string name)
+        {
+            var movie = FindByName(name);
+            if (movie != null)
+                _items.Remove(movie);
+        }
+
+        #region Private Members
 
         //private Movie[] _movies = new Movie[100];
         private List<Movie> _items = new List<Movie>();

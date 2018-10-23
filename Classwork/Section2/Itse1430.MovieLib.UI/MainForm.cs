@@ -28,6 +28,7 @@ namespace Itse1430.MovieLib.UI
             base.OnLoad(e);
 
             //Seed database
+            //var seed = new SeedDatabase();
             SeedDatabase.Seed(_database);
 
             _listMovies.DisplayMember = "Name";
@@ -123,7 +124,11 @@ namespace Itse1430.MovieLib.UI
             var movies = _database.GetAll();
 
             _listMovies.Items.Clear();
-            _listMovies.Items.AddRange(movies);
+
+            //TODO: Hard way
+            foreach (var movie in movies)
+                _listMovies.Items.Add(movie);
+            //_listMovies.Items.AddRange(movies);
         }
 
         private Movie GetSelectedMovie()
