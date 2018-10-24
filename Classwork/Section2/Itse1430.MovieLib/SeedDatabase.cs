@@ -1,14 +1,18 @@
-﻿using System;
+﻿/*
+ * ITSE 1430 
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Itse1430.MovieLib
 {
-    public static class SeedDatabase
+    /// <summary>Provides extensions for <see cref="MovieDatabase"/>.</summary>
+    public static class MovieDatabaseExtensions
     {
-        public static void Seed (MovieDatabase database)
+        /// <summary>Seeds a database.</summary>
+        /// <param name="source">The database to seed.</param>
+        public static void Seed(this IMovieDatabase source)
         {
             var movies = new[] {
                 new Movie() {
@@ -22,13 +26,16 @@ namespace Itse1430.MovieLib
                     ReleaseYear = 2004,
                 },
             };
-            Seed(database, movies);
+            Seed(source, movies);
         }
 
-        public static void Seed (MovieDatabase database, Movie[] movies)
+        /// <summary>Seeds a database.</summary>
+        /// <param name="source">The database to seed.</param>
+        /// <param name="movies">The movies to seed with.</param>
+        public static void Seed(this IMovieDatabase source, Movie[] movies)
         {
             foreach (var movie in movies)
-                database.Add(movie);
+                source.Add(movie);
         }
     }
 }

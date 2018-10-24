@@ -3,6 +3,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Itse1430.MovieLib.Memory
 {
@@ -23,7 +24,20 @@ namespace Itse1430.MovieLib.Memory
         /// <returns>The list of movies.</returns>
         protected override IEnumerable<Movie> GetAllCore()
         {
-            return _items;
+            //var i = _items.ToArray();
+
+            //return _items;
+
+            return _items.Select(Clone);
+            //foreach (var item in _items)
+                //yield return new Movie()
+                //{
+                //    Name = item.Name,
+                //    Description = item.Description,
+                //    ReleaseYear = item.ReleaseYear,
+                //    RunLength = item.RunLength,
+                //    IsOwned = item.IsOwned
+                //};
             ////How many movies do we have
             //var count = _items.Count;
 
@@ -37,6 +51,16 @@ namespace Itse1430.MovieLib.Memory
             //return temp;
         }
 
+        private Movie Clone ( Movie item )
+        {
+            return new Movie()
+            {
+                Name = item.Name,
+                Description = item.Description,
+                ReleaseYear = item.ReleaseYear,
+                RunLength = item.RunLength,
+                IsOwned = item.IsOwned
+            };
         /// <summary>Edits an existing movie.</summary>
         /// <param name="name">The movie to edit.</param>
         /// <param name="movie">The new movie.</param>
@@ -58,14 +82,18 @@ namespace Itse1430.MovieLib.Memory
             //var pairs = new Dictionary<string, Movie>();
 
             //for (var index = 0; index < _movies.Length; ++index)
-            foreach (var movie in _items)
-            {
-                //if (String.Compare(name, _movies[index]?.Name, true) == 0)
-                if (String.Compare(name, movie.Name, true) == 0)
-                    return movie;
-            };
+            //return _items.Where(IsName).FirstOrDefault();       //Will either return the first or if not will return default value
+            return _items.FirstOrDefault(IsName);
 
-            return null;
+            //return null;
+        }
+
+        private bool IsName (Movie movie)
+        {
+            if (String.Compare(name, movie.Name, true) == 0)
+                return true;
+
+            return false;
         }
 
         /// <summary>Removes a movie.</summary>
