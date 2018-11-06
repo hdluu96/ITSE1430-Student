@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*
+ * ITSE1430
+ */
+using System;
 using System.Collections.Generic;
 
 namespace Itse1430.MovieLib
@@ -11,17 +14,21 @@ namespace Itse1430.MovieLib
         public void Add(Movie movie)
         {
             //Validate
-            if(movie == null)
+            if (movie == null)
                 throw new ArgumentNullException("movie");
             ObjectValidator.Validate(movie);
 
             //if (movie == null) return;
 
-
-            AddCore(movie);
+            try
+            {
+                AddCore(movie);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Add failed", e);
+            };
         }
-
-        protected abstract void AddCore(Movie movie);
 
         /// <summary>Gets all the movies.</summary>
         /// <returns>The list of movies.</returns>
@@ -29,8 +36,6 @@ namespace Itse1430.MovieLib
         {
             return GetAllCore();
         }
-
-        protected abstract IEnumerable<Movie> GetAllCore();
 
         /// <summary>Edits an existing movie.</summary>
         /// <param name="name">The movie to edit.</param>
@@ -55,21 +60,42 @@ namespace Itse1430.MovieLib
             EditCore(existing, movie);
         }
 
-        protected abstract Movie FindByName(string name);
-
-        protected abstract void EditCore(Movie oldMovie, Movie newMovie);
-
         /// <summary>Removes a movie.</summary>
         /// <param name="name">The movie to remove.</param>
         public void Remove(string name)
         {
-            //TODO: Validate
-            if (String.IsNullOrEmpty(name))
-                return;
+            //Validate
+            if (name == null)
+                throw new ArgumentNullException(nameof(name));
+            else if (name == "")
+                throw new ArgumentException("Name cannot be empty.", nameof(name));
 
             RemoveCore(name);
         }
 
+        #region Protected Members
+
+        /// <summary>Adds a movie.</summary>
+        /// <param name="movie">The movie to add.</param>
+        protected abstract void AddCore(Movie movie);
+
+        /// <summary>Edits a movie.</summary>
+        /// <param name="oldMovie">The old movie.</param>
+        /// <param name="newMovie">The new movie.</param>
+        protected abstract void EditCore(Movie oldMovie, Movie newMovie);
+
+        /// <summary>Finds a movie by name.</summary>
+        /// <param name="name">The name of the movie.</param>
+        /// <returns>The movie, if any.</returns>
+        protected abstract Movie FindByName(string name);
+
+        /// <summary>Gets all the movies.</summary>
+        /// <returns>The list of movies.</returns>
+        protected abstract IEnumerable<Movie> GetAllCore();
+
+        /// <summary>Removes a movie.</summary>
+        /// <param name="name">The name of the movie.</param>
         protected abstract void RemoveCore(string name);
+        #endregion
     }
 }

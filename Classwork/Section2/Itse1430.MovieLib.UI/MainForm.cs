@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using Itse1430.MovieLib.Memory;
+using Itse1430.MovieLib.Sql;
 
 namespace Itse1430.MovieLib.UI
 {
@@ -28,11 +29,13 @@ namespace Itse1430.MovieLib.UI
         {
             base.OnLoad(e);
 
-            _database.Add(new Movie());
             //Seed database
             //var seed = new SeedDatabase();
             //SeedDatabase.Seed(_database);
-            _database.Seed();
+
+            //Use the extension method to seed the database
+            //Compiler generates this: MovieDatabaseExtensions.Seed(_database);
+            //_database.Seed();
 
             _listMovies.DisplayMember = "Name";
             RefreshMovies();
@@ -62,7 +65,23 @@ namespace Itse1430.MovieLib.UI
                 return;
 
             //Add to database and refresh
-            _database.Add(form.Movie);
+            try
+            {
+                _database.Add(form.Movie);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                //Log failure
+                //Crash app
+                //throw ex;
+
+                //Rethrow
+                //throw;
+            };
+
             RefreshMovies();
         }
 
@@ -100,7 +119,14 @@ namespace Itse1430.MovieLib.UI
                 return;
 
             //Remove from database and refresh
-            _database.Remove(item.Name);
+            try
+            {
+                _database.Remove(item.Name);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            };
             RefreshMovies();
         }
 
@@ -118,12 +144,20 @@ namespace Itse1430.MovieLib.UI
                 return;
 
             //Update database and refresh
-            _database.Edit(item.Name, form.Movie);
+            try
+            {
+                _database.Edit(item.Name, form.Movie);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            };
             RefreshMovies();
         }
 
         private void RefreshMovies()
         {
+            //OrderBy
             //var movies = _database.GetAll();
             var movies = from m in _database.GetAll()
                          orderby m.Name
@@ -131,9 +165,7 @@ namespace Itse1430.MovieLib.UI
 
             _listMovies.Items.Clear();
 
-            //TODO: Hard way
-            //foreach (var movie in movies)
-                //_listMovies.Items.Add(movie);
+            //Use ToArray extension method from LINQ
             _listMovies.Items.AddRange(movies.ToArray());
         }
 
@@ -142,7 +174,7 @@ namespace Itse1430.MovieLib.UI
             return _listMovies.SelectedItem as Movie;
         }
 
-        private IMovieDatabase _database = new MemoryMovieDatabase();
+        private IMovieDatabase _database = new SqlMovieDatabase();
 
         #endregion        
     }

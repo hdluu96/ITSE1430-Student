@@ -93,6 +93,10 @@
       <Project>{d668d979-1049-46c9-b02a-8c004340f9c4}</Project>
       <Name>Itse1430.MovieLib.Memory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Itse1430.MovieLib.Sql\Itse1430.MovieLib.Sql.csproj">
+      <Project>{7718E1C5-7805-498F-AB22-11F031D21256}</Project>
+      <Name>Itse1430.MovieLib.Sql</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Itse1430.MovieLib\Itse1430.MovieLib.csproj">
       <Project>{043b49d1-eca9-4d24-81a1-5618d1c27e7a}</Project>
       <Name>Itse1430.MovieLib</Name>
