@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{242453BB-D00B-497E-83F0-B50B31B8766F}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>Itse1430.MovieLib.UI</RootNamespace>
-    <AssemblyName>Itse1430.MovieLib.UI</AssemblyName>
+    <ProjectGuid>{E8D7885D-A4DF-4045-8154-626CD22E8565}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PlayWithReflection</RootNamespace>
+    <AssemblyName>PlayWithReflection</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,70 +35,22 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MovieForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovieForm.Designer.cs">
-      <DependentUpon>MovieForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovieForm.resx">
-      <DependentUpon>MovieForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Itse1430.MovieLib.Memory\Itse1430.MovieLib.Memory.csproj">
-      <Project>{d668d979-1049-46c9-b02a-8c004340f9c4}</Project>
-      <Name>Itse1430.MovieLib.Memory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Itse1430.MovieLib.Sql\Itse1430.MovieLib.Sql.csproj">
-      <Project>{7718E1C5-7805-498F-AB22-11F031D21256}</Project>
-      <Name>Itse1430.MovieLib.Sql</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Itse1430.MovieLib\Itse1430.MovieLib.csproj">
       <Project>{043b49d1-eca9-4d24-81a1-5618d1c27e7a}</Project>
       <Name>Itse1430.MovieLib</Name>
