@@ -8,6 +8,6 @@ namespace Itse1430.MovieLib.Sql
 {
     internal class SqlMovie : Movie
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
     }
 }
