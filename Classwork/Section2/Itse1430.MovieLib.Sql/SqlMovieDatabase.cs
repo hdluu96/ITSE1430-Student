@@ -30,26 +30,6 @@ namespace Itse1430.MovieLib.Sql
 
         protected override void AddCore(Movie movie)
         {
-            //var conn = new SqlConnection(_connectionString);
-
-            #region Approaches to adding parameters
-
-            //Approach 1
-            //var param = new SqlParameter("@title", System.Data.SqlDbType.VarChar);
-            //param.Value = movie.Name;
-            //cmd.Parameters.Add(param);
-
-            //Approach 2
-            //var param = cmd.Parameters.Add("@title", System.Data.SqlDbType.VarChar);
-            //param.Value = movie.Name;
-
-            //Approach 3            
-            //cmd.Parameters.AddWithValue("@title", movie.Name);
-
-            #endregion
-
-            //Run command
-            //try
             using (var conn = CreateConnection())
             {
                 var cmd = new SqlCommand("AddMovie", conn);
@@ -64,17 +44,12 @@ namespace Itse1430.MovieLib.Sql
                 var result = cmd.ExecuteScalar();
                 var id = Convert.ToInt32(result);
             };
-            /*} finally
-            {
-                conn.Close();
-            };*/
         }
 
         protected override void EditCore(Movie oldMovie, Movie newMovie)
         {
             using (var conn = CreateConnection())
             {
-                //var cmd = new SqlCommand("AddMovie", conn);
                 var cmd = conn.CreateCommand();
                 cmd.CommandText = "UpdateMovie";
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -93,7 +68,6 @@ namespace Itse1430.MovieLib.Sql
 
         protected override Movie FindByName(string name)
         {
-            //Use a data reader
             using (var conn = CreateConnection())
             {
                 var cmd = new SqlCommand("GetAllMovies", conn);
@@ -107,8 +81,6 @@ namespace Itse1430.MovieLib.Sql
                         var movieName = reader.GetString(1);
                         if (String.Compare(movieName, name, true) != 0)
                             continue;
-
-                        //reader.GetOrdinal("Id");
 
                         return new SqlMovie()
                         {
@@ -140,13 +112,12 @@ namespace Itse1430.MovieLib.Sql
                 da.Fill(ds);
             };
 
-            //Read data
-            //if (!ds.Tables.OfType<DataTable>().Any())
-            //    return Enumerable.Empty<Movie>();
+            //Must have at least one table
             var table = ds.Tables.OfType<DataTable>().FirstOrDefault();
             if (table == null)
                 return Enumerable.Empty<Movie>();
 
+            //Enumerate the rows
             var movies = new List<Movie>();
             foreach (var row in table.Rows.OfType<DataRow>())
             {
@@ -163,8 +134,6 @@ namespace Itse1430.MovieLib.Sql
             };
 
             return movies;
-            //throw new NotImplementedException();
-            //return new Movie[0];
         }
 
         protected override void RemoveCore(string name)

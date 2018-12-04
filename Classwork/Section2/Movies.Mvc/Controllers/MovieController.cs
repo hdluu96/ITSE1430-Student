@@ -1,18 +1,18 @@
-﻿using Itse1430.MovieLib;
-using Itse1430.MovieLib.Sql;
-using Movies.Mvc.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Itse1430.MovieLib;
+using Itse1430.MovieLib.Sql;
+using Movies.Mvc.Models;
 
 namespace Movies.Mvc.Controllers
 {
     public class MovieController : Controller
     {
-        public MovieController ()
+        public MovieController()
         {
             var connString = ConfigurationManager.ConnectionStrings["MovieDatabase"];
 
@@ -22,7 +22,6 @@ namespace Movies.Mvc.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-
             var items = _database.GetAll();
 
             return View(items.Select(i => new MovieModel(i)));
@@ -46,6 +45,30 @@ namespace Movies.Mvc.Controllers
         }
 
         [HttpPost]
+        public ActionResult Edit(MovieModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var item = model.ToDomain();
+
+                    var existing = _database.GetAll()
+                                        .FirstOrDefault(i => i.Id == model.Id);
+                    _database.Edit(existing.Name, item);
+
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                };
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
         public ActionResult Create(MovieModel model)
         {
             if (ModelState.IsValid)
@@ -58,7 +81,7 @@ namespace Movies.Mvc.Controllers
 
                     return RedirectToAction("Index");
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     ModelState.AddModelError("", e.Message);
                 };
@@ -67,27 +90,32 @@ namespace Movies.Mvc.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult Edit(MovieModel model)
+        [HttpGet]
+        public ActionResult Delete(int id)
         {
-            if (ModelState.IsValid)
+            var item = _database.GetAll().FirstOrDefault(i => i.Id == id);
+
+            return View(new MovieModel(item));
+        }
+
+        [HttpPost]
+        public ActionResult Delete(MovieModel model)
+        {
+            try
             {
-                try
-                {
-                    var item = model.ToDomain();
+                var existing = _database.GetAll().FirstOrDefault(i => i.Id == model.Id);
+                if (existing == null)
+                    return HttpNotFound();
 
-                    var existing = _database.GetAll().FirstOrDefault(i => i.Id == model.Id);
-                    _database.Edit(existing.Name, item);
+                _database.Remove(existing.Name);
 
-                    return RedirectToAction("Index");
-                }
-                catch (Exception e)
-                {
-                    ModelState.AddModelError("", e.Message);
-                };
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return View(model);
             };
-
-            return View(model);
         }
 
         private readonly IMovieDatabase _database;
