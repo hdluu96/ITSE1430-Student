@@ -17,5 +17,6 @@ namespace EventPlanner.Mvc.Controllers
         {
             return View();
         }
+
     }
 }
